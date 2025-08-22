@@ -1,16 +1,19 @@
 <?php
 
-include '../config/db.php';
+include '../../config/db.php';
 
 $id = $_GET['id'];
+
+$times = $conn->query("SELECT id, nome FROM times");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nome = $_POST['nome'];
     $posicao = $_POST['posicao'];
     $numero_camisa = $_POST['numero_camisa'];
+    $time_id = $_POST['time']; 
 
-    $sql = "UPDATE usuarios SET nome ='$nome',posicao ='$posicao',numero_camisa ='$numero_camisa' WHERE id=$id";
+    $sql = "UPDATE jogadores SET nome ='$nome',posicao ='$posicao',numero_camisa ='$numero_camisa',time_id ='$time_id' WHERE id=$id";
 
     if ($conn->query($sql) === true) {
         echo "Registro atualizado com sucesso.
@@ -51,6 +54,14 @@ $row = $result -> fetch_assoc();
 
         <label for="numero_camisa">Numero da Camisa:</label>
         <input type="number" name="numero_camisa" value="<?php echo $row['numero_camisa'];?>" required>
+
+        <label for="time">Time:</label>
+        <select name="time" required>
+            <option value="">Selecione</option>
+            <?php while ($row = $times->fetch_assoc()): ?>
+                <option value="<?= $row['id'] ?>"><?= ($row['nome']) ?></option>
+            <?php endwhile; ?>
+        </select>
 
         <input type="submit" value="Atualizar">
 

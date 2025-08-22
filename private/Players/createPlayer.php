@@ -1,14 +1,17 @@
 <?php
 
-include '../config/db.php';
+include '../../config/db.php';
+
+$times = $conn->query("SELECT id, nome FROM times");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nome = $_POST['nome'];
     $posicao = $_POST['posicao'];
     $numero_camisa = $_POST['numero_camisa'];
+    $time_id = $_POST['time']; 
 
-    $sql = " INSERT INTO jogadores (nome,posicao,numero_camisa) VALUE ('$nome','$posicao','$numero_camisa')";
+    $sql = "INSERT INTO jogadores (nome, posicao, numero_camisa, time_id) VALUES ('$nome', '$posicao', '$numero_camisa', '$time_id')";
 
     if ($conn->query($sql) === true) {
         echo "Novo registro criado com sucesso.";
@@ -47,6 +50,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <label for="numero_camisa">Numero da Camisa:</label>
         <input type="number" name="numero_camisa" required>
+
+        <br>
+        <br>
+
+        <label for="time">Time:</label>
+        <select name="time" required>
+            <option value="">Selecione</option>
+            <?php while ($row = $times->fetch_assoc()): ?>
+                <option value="<?= $row['id'] ?>"><?= ($row['nome']) ?></option>
+            <?php endwhile; ?>
+        </select>
 
         <br>
         <br>
