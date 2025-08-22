@@ -50,7 +50,13 @@ $row = $result -> fetch_assoc();
         <input type="text" name="nome" value="<?php echo $row['nome'];?>" required>
 
         <label for="posicao">Posição:</label>
-        <input type="text" name="posicao" value="<?php echo $row['posicao'];?>" required>
+        <select name="posicao" required>
+            <option value="">Selecione</option>
+            <option value="Goleiro">Goleiro</option>
+            <option value="Zagueiro">Zagueiro</option>
+            <option value="Meio-campo">Meio-campo</option>
+            <option value="Atacante">Atacante</option>
+        </select>
 
         <label for="numero_camisa">Numero da Camisa:</label>
         <input type="number" name="numero_camisa" value="<?php echo $row['numero_camisa'];?>" required>

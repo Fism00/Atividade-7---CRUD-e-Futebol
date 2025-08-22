@@ -43,7 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <br>
 
         <label for="posicao">Posição:</label>
-        <input type="text" name="posicao" required>
+        <select name="posicao" required>
+            <option value="">Selecione</option>
+            <option value="Goleiro">Goleiro</option>
+            <option value="Zagueiro">Zagueiro</option>
+            <option value="Meio-campo">Meio-campo</option>
+            <option value="Atacante">Atacante</option>
+        </select>
 
         <br>
         <br>
