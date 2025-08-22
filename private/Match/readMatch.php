@@ -1,5 +1,5 @@
 <?php
-<?php
+
 include '../../config/db.php';
 
 // Buscar partidas

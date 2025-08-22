@@ -1,5 +1,4 @@
 <?php
-<?php
 include '../../config/db.php';
 
 // Buscar times para o formulário
