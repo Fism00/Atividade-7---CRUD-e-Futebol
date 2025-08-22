@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        header("Location: listMatch.php?msg=Partida excluída com sucesso!");
+        header("Location: readMatch.php?msg=Partida excluída com sucesso!");
         exit;
     } else {
         echo "<p style='color:red;'>Erro ao excluir partida.</p>";

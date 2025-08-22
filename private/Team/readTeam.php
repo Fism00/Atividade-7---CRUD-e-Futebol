@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
                 <td> {$row['nome']} </td>
                 <td> {$row['cidade']} </td>
                 <td> <a href='updateTeam.php?id={$row['id']}'>Editar<a> </td>
-                <td><a href='deleteTeam.php?id={$row['id']}'>Excluir<a> </td>
+                <td><a href='deleteTeam.php?id={$row['id']}' >Excluir<a> </td>
                 
                 
               </tr>   
@@ -33,9 +33,9 @@ if ($result->num_rows > 0) {
     }
     echo "</table>";
 } else {
-    echo "Nenhum registro encontrado.";
+    echo "Nenhum time registrado.";
 }
 
 $conn -> close();
 
-echo "<a href='createTeam.php'>Inserir novo Registro</a>";
+echo "<a href='createTeam.php'>Inserir novo registro</a>";
