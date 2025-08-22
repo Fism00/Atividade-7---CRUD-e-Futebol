@@ -24,8 +24,8 @@ if ($result->num_rows > 0) {
                 <td> {$row['id']} </td>
                 <td> {$row['nome']} </td>
                 <td> {$row['cidade']} </td>
-                <td> <a href='update.php?id={$row['id']}'>Editar<a> </td>
-                <td><a href='delete.php?id={$row['id']}'>Excluir<a> </td>
+                <td> <a href='updateTeam.php?id={$row['id']}'>Editar<a> </td>
+                <td><a href='deleteTeam.php?id={$row['id']}'>Excluir<a> </td>
                 
                 
               </tr>   
@@ -38,4 +38,4 @@ if ($result->num_rows > 0) {
 
 $conn -> close();
 
-echo "<a href='create.php'>Inserir novo Registro</a>";
+echo "<a href='createTeam.php'>Inserir novo Registro</a>";
