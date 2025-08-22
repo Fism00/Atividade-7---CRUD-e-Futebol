@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
                 <td> {$row['nome']} </td>
                 <td> {$row['cidade']} </td>
                 <td> <a href='updateTeam.php?id={$row['id']}'>Editar<a> </td>
-                <td><a href='deleteTeam.php?id={$row['id']}' >Excluir<a> </td>
+                <td> <a href='deleteTeam.php?id={$row['id']}'>Excluir<a> </td>
                 
                 
               </tr>   
