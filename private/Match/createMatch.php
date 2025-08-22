@@ -1,5 +1,4 @@
 <?php
-<?php
 include '../../config/db.php';
 
 // Buscar times para o formulário
@@ -29,39 +28,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php include '../../partials/Header.php'; ?>
-<h2>Cadastrar Partida</h2>
-<?php if (!empty($erro)) echo "<p style='color:red;'>$erro</p>"; ?>
-<form method="post">
-    <label>Time Mandante:</label>
-    <select name="time_casa" required>
-        <option value="">Selecione</option>
-        <?php while ($row = $times->fetch_assoc()): ?>
-            <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['nome']) ?></option>
-        <?php endwhile; ?>
-    </select><br>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastrar Partida</title>
+</head>
+<body>
+    <h2>Cadastrar Partida</h2>
+    <?php if (!empty($erro)) echo "<p style='color:red;'>$erro</p>"; ?>
+    <form method="post">
+        <label>Time Mandante:</label>
+        <select name="time_casa" required>
+            <option value="">Selecione</option>
+            <?php while ($row = $times->fetch_assoc()): ?>
+                <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['nome']) ?></option>
+            <?php endwhile; ?>
+        </select><br>
 
-    <?php
-    // Re-buscar times para o segundo select
-    $times2 = $conn->query("SELECT id, nome FROM times");
-    ?>
-    <label>Time Visitante:</label>
-    <select name="time_fora" required>
-        <option value="">Selecione</option>
-        <?php while ($row = $times2->fetch_assoc()): ?>
-            <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['nome']) ?></option>
-        <?php endwhile; ?>
-    </select><br>
+        <?php
+        // Re-buscar times para o segundo select
+        $times2 = $conn->query("SELECT id, nome FROM times");
+        ?>
+        <label>Time Visitante:</label>
+        <select name="time_fora" required>
+            <option value="">Selecione</option>
+            <?php while ($row = $times2->fetch_assoc()): ?>
+                <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['nome']) ?></option>
+            <?php endwhile; ?>
+        </select><br>
 
-    <label>Data do Jogo:</label>
-    <input type="date" name="data_jogo" required><br>
+        <label>Data do Jogo:</label>
+        <input type="date" name="data_jogo" required><br>
 
-    <label>Gols Mandante:</label>
-    <input type="number" name="gols_casa" min="0" value="0" required><br>
+        <label>Gols Mandante:</label>
+        <input type="number" name="gols_casa" min="0" value="0" required><br>
 
-    <label>Gols Visitante:</label>
-    <input type="number" name="gols_fora" min="0" value="0" required><br>
+        <label>Gols Visitante:</label>
+        <input type="number" name="gols_fora" min="0" value="0" required><br>
 
-    <button type="submit">Cadastrar</button>
-</form>
-<?php include '../../partials/Footer.php'; ?>
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>
