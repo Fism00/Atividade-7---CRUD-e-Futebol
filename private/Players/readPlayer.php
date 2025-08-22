@@ -1,8 +1,10 @@
 <?php
 
-include '../config/db.php';
+include '../../config/db.php';
 
-$sql = "SELECT * FROM jogadores";
+$sql = "SELECT jogadores.id, jogadores.nome, jogadores.posicao, jogadores.numero_camisa, times.nome AS time_nome
+        FROM jogadores
+        JOIN times ON jogadores.time_id = times.id";
 
 $result = $conn->query($sql);
 
@@ -14,10 +16,11 @@ if ($result->num_rows > 0) {
             <th> Nome </th>
             <th> Posição </th>
             <th> Numero da Camisa </th>
+            <th> Time </th>
             <th> Ações </th>
         </tr>
          ";
-
+     
     while ($row = $result->fetch_assoc()) {
 
         echo "<tr>
@@ -25,9 +28,10 @@ if ($result->num_rows > 0) {
                 <td> {$row['nome']} </td>
                 <td> {$row['posicao']} </td>
                 <td> {$row['numero_camisa']} </td>
+                <td> {$row['time_nome']} </td>
                 <td> 
-                    <a href='updatePlayers.php?id={$row['id']}'>Editar<a>
-                    <a href='deletePlayers.php?id={$row['id']}'>Excluir<a>
+                    <a href='updatePlayer.php?id={$row['id']}'>Editar<a>
+                    <a href='deletePlayer.php?id={$row['id']}'>Excluir<a>
                 
                 </td>
               </tr>   
@@ -40,4 +44,4 @@ if ($result->num_rows > 0) {
 
 $conn -> close();
 
-echo "<a href='createPlayers.php'>Inserir novo Registro</a>";
+echo "<a href='createPlayer.php'>Inserir novo Registro</a>";
